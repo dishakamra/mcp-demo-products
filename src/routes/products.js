@@ -4,7 +4,10 @@ const productService = require("../services/productService.js");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.json(productService.list());
+  const limit = Number(req.query.limit || 0);
+  const all = productService.list();
+  const result = limit > 0 ? all.slice(0, limit) : all;
+  res.json(result);
 });
 
 router.get("/:id", (req, res) => {
