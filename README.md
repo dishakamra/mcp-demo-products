@@ -32,7 +32,7 @@ Base URL: `http://localhost:3000`
 | Method | Path | Description | Notes |
 | --- | --- | --- | --- |
 | GET | `/health` | Lightweight liveness probe | Returns `{ "status": "ok" }`. |
-| GET | `/products` | List all products | Returns an array. |
+| GET | `/products` | List all products | Returns an array. Optional `?limit=<n>` query param caps the number of returned records (e.g., `/products?limit=2`). |
 | GET | `/products/:id` | Retrieve a single product | Returns `404` if the id does not exist. |
 | POST | `/products` | Create a product | Body requires `name` (string, ≥ 2 chars) and `price` (number > 0). Optional fields (e.g., `tags`) are persisted as provided. Returns `201` with the created record. |
 | PUT | `/products/:id` | Update an existing product | Full-object update with the same validation rules as `POST`. Returns `404` if the product does not exist. |
